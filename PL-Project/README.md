@@ -3,7 +3,6 @@
 
 ## 📌 **Project 1：OurScheme Interpreter (Basic)**
 
----
 
 ### **Overview**
 Project 1 的目標是實作一個簡單的 OurScheme 解譯器，主要功能為讀取 S-expression、解析並以格式化方式輸出。
