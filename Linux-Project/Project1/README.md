@@ -11,37 +11,37 @@
 * Ubuntu 16.04 , 64位元
 * Kernel 4.15.1
 ## Compile Kernel
-1. 下載 linux kernel 並解壓縮
-    `tar -xvf ~/linux-4.15.1.tar.gz`
+1. 下載 linux kernel 並解壓縮  
+    `tar -xvf ~/linux-4.15.1.tar.gz`  
     `cd linux-4.15.1/`
     
 	[下載網址](https://cdn.kernel.org/pub/linux/kernel/v4.x/)
-2. 在目錄 linux-4.15.1/ 下
-    `mkdir mycall`
+3. 在目錄 linux-4.15.1/ 下  
+    `mkdir mycall`  
     `cd mycall`
     
-3. 新增一個檔案 virtophy.c，後面有system call 的程式
+4. 新增一個檔案 virtophy.c，後面有system call 的程式  
     
-4. 在目錄 linux-4.15.1/mycall/ 下
-    `gedit Makefile`
+5. 在目錄 linux-4.15.1/mycall/ 下  
+    `gedit Makefile`  
     `obj-y := virtophy.o`
     
-5. 在目錄 linux-4.15.1/ 下修改檔案 Makefile 
-    這是為了告訴它，新增的 system call 的 source files 是在 mycall 目錄下
-    `gedit Makefile`
+6. 在目錄 linux-4.15.1/ 下修改檔案 Makefile 
+    這是為了告訴它，新增的 system call 的 source files 是在 mycall 目錄下  
+    `gedit Makefile`  
    ```
    core-y += kernel/ mm/ fs/ ipc/ security/ crypto/ block/
    找到這行，在最後面新增 mycall/
 
    core-y += kernel/ mm/ fs/ ipc/ security/ crypto/ block/ mycall/
    ```
-6. 新增 system call 到 system call table 中
-    `gedit arch/x86/entry/syscalls/syscall_64.tbl`
+7. 新增 system call 到 system call table 中  
+    `gedit arch/x86/entry/syscalls/syscall_64.tbl`  
     ```
     在最後面新增一行
     333	common	virtophy		sys_get_physical_address
     ```
-7. 修改 system call header
+8. 修改 system call header  
     `gedit include/linux/syscalls.h`
     
     ```
@@ -52,41 +52,41 @@
     asmlinkage 代表我們的參數都可以在 stack 裡取用
     ```
 
-8. 安裝編譯 kernel 所需的套件
-    `sudo apt-get install libncurses5-dev libssl-dev`
+9. 安裝編譯 kernel 所需的套件  
+    `sudo apt-get install libncurses5-dev libssl-dev`  
 	`sudo apt install build-essential libncurses-dev libssl-dev libelf-dev bison flex -y`
 
 
-9. 設定檔
+10. 設定檔  
     `sudo make menuconfig`
 
-10. 開始編譯
-    `sudo make -j2`
-    `sudo make modules_install install -j2`
+11. 開始編譯  
+    `sudo make -j2`  
+    `sudo make modules_install install -j2`  
     `sudo make install -j2`
 
-11. 修改 grub
-    `sudo update-grub`
-12. 重開機
+12. 修改 grub  
+    `sudo update-grub`  
+13. 重開機  
     `reboot`
 ## System Call
 ### Linux page table layout
 ![image](https://hackmd.io/_uploads/rywRrPs46.png)
 
 >
->64-bits電腦在Linear address可依序拆分為pgd、p4d、pud、pmd、pte table，
->但實際上有用到的僅pgd、pud、pmd、pte table，而p4d僅單純傳遞pgd的值，
+>64-bits電腦在Linear address可依序拆分為pgd、p4d、pud、pmd、pte table，  
+>但實際上有用到的僅pgd、pud、pmd、pte table，而p4d僅單純傳遞pgd的值，  
 >每個table裡，各entry型態為pgd_t、p4d_t、pud_t、pmd_t、pte_t。
 
->pgd_offset可以透過mm_struct和virtual address，向PGD裡的對應index entry，而entry裡內容
->會再指向下一層p4d table起始位置。
->p4d_offset找到p4d中對應的index entry，entry裡內容會再指向下一層pud table起始位置。
->pud_offset找到pud中對應的index entry，entry裡內容會再指向下一層pmd table起始位置。
->pmd_offset找到pmd中對應的index entry，entry裡內容會再指向下一層pte table起始位置。
+>pgd_offset可以透過mm_struct和virtual address，向PGD裡的對應index entry，而entry裡內容  
+>會再指向下一層p4d table起始位置。  
+>p4d_offset找到p4d中對應的index entry，entry裡內容會再指向下一層pud table起始位置。  
+>pud_offset找到pud中對應的index entry，entry裡內容會再指向下一層pmd table起始位置。  
+>pmd_offset找到pmd中對應的index entry，entry裡內容會再指向下一層pte table起始位置。  
 >pte_offset找到pte中對應的index entry，entry裡內容是pte base address。
 
->page address透過pte base address和PASK_MASK取得，
->page offset透過virtual address和~PASK_MASK取得，
+>page address透過pte base address和PASK_MASK取得，  
+>page offset透過virtual address和~PASK_MASK取得，  
 >最終page address 結合 page offset 組成 physical address。
 
 
@@ -161,19 +161,17 @@ SYSCALL_DEFINE3(get_physical_address, unsigned long*, initial, unsigned long*, r
         kfree(va);
         kfree(pa);
         return ret;
-
 }
-
 ```
 
 ### 程式碼解釋
 ```
 SYSCALL_DEFINE3(get_physical_address, unsigned long*, initial, unsigned long*, result, int, n)
 ```
-> SYSCALL_DEFINE3: 輸入變數是3，故是DEFINE3
-> get_physical_address: function, 但此處沒用到
-> unsigned long*, initial: virtual address
-> unsigned long*, result: physical address
+> SYSCALL_DEFINE3: 輸入變數是3，故是DEFINE3  
+> get_physical_address: function, 但此處沒用到    
+> unsigned long*, initial: virtual address  
+> unsigned long*, result: physical address  
 > int, n: 傳入陣列的大小
 
 
@@ -181,16 +179,16 @@ SYSCALL_DEFINE3(get_physical_address, unsigned long*, initial, unsigned long*, r
 va = (unsigned long*)kmalloc(sizeof(unsigned long)*n,GFP_KERNEL);
 pa = (unsigned long*)kmalloc(sizeof(unsigned long)*n,GFP_KERNEL);
 ```
-> The kmalloc() function is a simple interface for obtaining kernel memory in byte-sized chunks.The function returns a pointer to a region of memory that is at least size bytes in length. The region of memory allocated is physically contiguous.
-> GFP_KERNEL is normal allocation flag.
+> The kmalloc() function is a simple interface for obtaining kernel memory in byte-sized chunks.The function returns a pointer to a region of memory that is at least size bytes in length. The region of memory allocated is physically contiguous.  
+> GFP_KERNEL is normal allocation flag.  
 
 ```
 ret = copy_from_user(va, initial, sizeof(*va)*n);
 ret = copy_to_user(result, pa, sizeof(*pa)*n);
 ```
-[/include/linux/uaccess.h](https://https://elixir.bootlin.com/linux/v4.15.10/source/include/linux/uaccess.h#L144)
-![image](https://hackmd.io/_uploads/rJnh6w1Hp.png)
-> 可以看出來copy_from_user是從user space copy virutal address到kernel space，
+[/include/linux/uaccess.h](https://https://elixir.bootlin.com/linux/v4.15.10/source/include/linux/uaccess.h#L144)  
+![image](https://hackmd.io/_uploads/rJnh6w1Hp.png)  
+> 可以看出來copy_from_user是從user space copy virutal address到kernel space，  
 > 而copy_to_user是從kernel space copy physical address到user space。
 
 ```
@@ -219,9 +217,9 @@ pgd = pgd_offset(current->mm, va[i]);
 #define pgd_offset(mm, address)	((mm)->pgd+pgd_index(address))
 
 ```
-> PAGE_SHIFT: Page size, 2**13=8K bytes
-> PTRS_PER_PGD: PGD中的entry數量，1左移10位(13-3)個
-> pgd_index: 輸入virtual address 先找到PGD base address，再找到是哪個index的entry
+> PAGE_SHIFT: Page size, 2**13=8K bytes  
+> PTRS_PER_PGD: PGD中的entry數量，1左移10位(13-3)個  
+> pgd_index: 輸入virtual address 先找到PGD base address，再找到是哪個index的entry  
 > 最後pgd_offset得到對應index的entry， entry內容會指向下一層
 
 
@@ -327,23 +325,23 @@ int main(){
 }
 ```
 * **程式設計流程**
-  > 1. 使用 pthread_create 定義 3 個 threads
-  > 2. 使用 pthread_mutex_t 避免 thread 之間的衝突
-  > 3. 宣告 7 個變數，分別儲存在記憶體不同位置
-  > 4. 將 7 個變數透過一個陣列餵給 system call，並產生 physical address
-  > 5. 輸出轉址結果
-  > 6. 輸出 3 個 threads 的 start address、end address、size
-  > 7. 最後，使用 pthread_join 等待 thread 執行結束
+  >1. 使用 pthread_create 定義 3 個 threads  
+  >2. 使用 pthread_mutex_t 避免 thread 之間的衝突  
+  >3. 宣告 7 個變數，分別儲存在記憶體不同位置  
+  >4. 將 7 個變數透過一個陣列餵給 system call，並產生 physical address  
+  >5. 輸出轉址結果
+  >6. 輸出 3 個 threads 的 start address、end address、size
+  >7. 最後，使用 pthread_join 等待 thread 執行結束
 * **mutex 的用法**
-  > 在 multi-thread 下使用 mutex 避免衝突
-  > 定義以及初始化 mutex `pthread_mutex_t mutex1 = PTHREAD_MUTEX_INITIALIZER;`
-  > 將 mutex 設為鎖定狀態 `pthread_mutex_lock( &mutex1 );`
-  > 將 mutex 設為解除鎖定狀態 `pthread_mutex_unlock( &mutex1 );`
-* **使用資料型態 size_t\* 存放 address**
-  > size_t* 是指向 size_t 的指標型別，用於存儲 size_t 變數的地址
-  > 如果系統是 32 位元，size_t 是 unsigned int 
-  > 如果系統是 64 位元，size_t 是 unsigned long 型別
-  > size_t 的定義在: `/usr/include/linux/types.h`
+  > 在 multi-thread 下使用 mutex 避免衝突  
+  > 定義以及初始化 mutex `pthread_mutex_t mutex1 = PTHREAD_MUTEX_INITIALIZER;`  
+  > 將 mutex 設為鎖定狀態 `pthread_mutex_lock( &mutex1 );`  
+  > 將 mutex 設為解除鎖定狀態 `pthread_mutex_unlock( &mutex1 );`  
+* **使用資料型態 size_t\* 存放 address**  
+  > size_t* 是指向 size_t 的指標型別，用於存儲 size_t 變數的地址  
+  > 如果系統是 32 位元，size_t 是 unsigned int  
+  > 如果系統是 64 位元，size_t 是 unsigned long 型別  
+  > size_t 的定義在: `/usr/include/linux/types.h`  
   > 
     ```C=
     #define _SIZE_T
@@ -353,23 +351,23 @@ int main(){
 ## 執行結果
 ![multi-thread output](https://hackmd.io/_uploads/BkA63rRNa.png)
 ### 變數的記憶體位置
->1. Code segment
-    ourFunc 在Main thread, Thread1, Thread2 指向相同 physical address(0x1900e0a36) 
+>1. Code segment  
+    ourFunc 在Main thread, Thread1, Thread2 指向相同 physical address(0x1900e0a36)  
     => 共用 Code segment
->2. Data segment
-    變數 initGlobal 在 Main thread, Thread1, Thread2 中皆指向相同 physical address(0x80000001884e40a0) 
+>2. Data segment  
+    變數 initGlobal 在 Main thread, Thread1, Thread2 中皆指向相同 physical address(0x80000001884e40a0)  
     => 共用 Data segment
->3. BSS segment
-    變數 notInitGlobal 在 Main thread, Thread1, Thread2 中皆指向相同 physical address(0x80000001884e4128) 
+>3. BSS segment  
+    變數 notInitGlobal 在 Main thread, Thread1, Thread2 中皆指向相同 physical address(0x80000001884e4128)  
     => 共用 BSS segment
->4. Library
-    printf 在 Main thread, Thread1, Thread2 中皆指向相同 physical address(0x1900e0890) 
+>4. Library  
+    printf 在 Main thread, Thread1, Thread2 中皆指向相同 physical address(0x1900e0890)  
     => 共用 Library
->5. Stack segment
-    localVal 在Main thread, Thread1, Thread2 指向 Stack 的physical address皆不同(分別為0x80000001868e6e9c, 0x80000001c3278dd0, 0x8000000186f48dd0)，表示各自建立自己的stack 
+>5. Stack segment  
+    localVal 在Main thread, Thread1, Thread2 指向 Stack 的physical address皆不同(分別為0x80000001868e6e9c, 0x80000001c3278dd0, 0x8000000186f48dd0)，表示各自建立自己的stack  
     => 不共用 Stack segment
->6. Thread local storage
-     Thread local 變數:tx 在Main thread, Thread1, Thread2 指向 Thread local storage 的physical address皆不同(分別為0x80000001d052572c, 0x8000000191df56ec, 0x800000018c61f6ec)，表示各自建立自己的Thread local storage 
+>6. Thread local storage  
+     Thread local 變數:tx 在Main thread, Thread1, Thread2 指向 Thread local storage 的physical address皆不同(分別為0x80000001d052572c, 0x8000000191df56ec, 0x800000018c61f6ec)，表示各自建立自己的Thread local storage  
     => 不共用 Thread local storage
     
 ### Heap segment
@@ -380,18 +378,18 @@ int main(){
 
 
 ## 遇到問題
-1.VMWare 17, Ubuntu無法正常開機
+1.VMWare 17, Ubuntu無法正常開機  
 > 解決：安裝 VMWare 16版
 
 
-2.Ubuntu和Kernel版相容問題
+2.Ubuntu和Kernel版相容問題  
 問題：加system call並compile, 重開會黑屏無法使用
-> 嘗試過版本：(有問題版本)
-> a.Ubuntu 14.03 + Kernel 3.19 32位元
+> 嘗試過版本：(有問題版本)  
+> a.Ubuntu 14.03 + Kernel 3.19 32位元  
 > b.Ubuntu 16.04 + Kernel 3.10 32位元
 
-> 解決：
-> 先看下載後的Ubuntu Kernel 版本是什，找比正常版稍微新的
+> 解決：  
+> 先看下載後的Ubuntu Kernel 版本是什，找比正常版稍微新的  
 > Ubuntu 16.04 + Kernel 4.15.1 64位元
 
 
