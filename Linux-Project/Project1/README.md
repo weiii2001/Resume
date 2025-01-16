@@ -6,9 +6,6 @@
 
 [題目說明](https://staff.csie.ncu.edu.tw/hsufh/COURSES/FALL2023/linux_project_1.html)
 
-## Outline
-[TOC]
-
 ## Enviroment
 * VMware 16.2.4
 * Ubuntu 16.04 , 64位元
