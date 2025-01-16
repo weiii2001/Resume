@@ -172,18 +172,18 @@ int main(){
   > line3: 在 core.c __schedule() 中，更改 static_prio 之後  
   > line4: SYSCALL334 使用 system call 查看 static_prio 是否有成功修改  
 * 程式輸出  
-  ![image](https://hackmd.io/_uploads/S1Eh1xrua.png =80%x)
+  ![image](https://hackmd.io/_uploads/S1Eh1xrua.png)
   
   > 為了防止新process佔用cpu時間，place_entity會對新process的vruntime進行處罰，故雖然改變的static_prior，但因為對新process權重改變的vruntime處罰，實際運行的時間並無隨prior有趨勢上的變化。
   
 ## 補充
 ### 四種Scheduling class及priority
-透過Next 把各Scheduling classes 串起來
-![image](https://hackmd.io/_uploads/r1kNWo8OT.png =60%x)
+透過Next 把各Scheduling classes 串起來  
+![image](https://hackmd.io/_uploads/r1kNWo8OT.png)
 
 
 ### task_struct 四種優先級成員變數
-[/include/linux/sched.h](https://elixir.bootlin.com/linux/v4.15.1/source/include/linux/sched.h#L520)
+[/include/linux/sched.h](https://elixir.bootlin.com/linux/v4.15.1/source/include/linux/sched.h#L520)  
 在與task有關的task_struct 裡，因應不同的scheuling定義了四種優先級的成員變數
 ```c=
 struct task_struct {
@@ -194,8 +194,8 @@ struct task_struct {
 	unsigned int	rt_priority;
     ...
 ```
-> prio
-> 動態優先級，系統會針對此prio值去選擇scheduling class，為調度器真正使用的優先度
+> prio  
+> 動態優先級，系統會針對此prio值去選擇scheduling class，為調度器真正使用的優先度  
 > 初始值由sched_fork()或由effective_prio()決定
 ```c=
 static int effective_prio(struct task_struct *p)
@@ -212,16 +212,16 @@ static int effective_prio(struct task_struct *p)
 }
 ```
 
-> static_prio
-> 静態優先級，為process 被創造時sched_fork()產生
-> 可以透過nice、renice或者setpriority()來做修改
-> 用戶透過輸入nice到NICE_TO_PRIO修改static_prio值
+> static_prio  
+> 静態優先級，為process 被創造時sched_fork()產生  
+> 可以透過nice、renice或者setpriority()來做修改  
+> 用戶透過輸入nice到NICE_TO_PRIO修改static_prio值  
 
 
->normal_prio
->是基於static_prio和調度策略計算出來的優先權，在建立process時會繼承父行程normal_prio。
->normal tasks：normal_prio = static_prio；
->real time task：normal_prio = 99 - rt_priority;
+>normal_prio  
+>是基於static_prio和調度策略計算出來的優先權，在建立process時會繼承父行程normal_prio。  
+>normal tasks：normal_prio = static_prio；  
+>real time task：normal_prio = 99 - rt_priority;  
 ```c=
 static inline int __normal_prio(struct task_struct *p)
 {
@@ -242,11 +242,11 @@ static inline int normal_prio(struct task_struct *p)
 }
 ```
 
-> rt_priority
+> rt_priority  
 > Realtime優先級，在被rl調度器調度的process中才會有意義, 範圍0-99
 
 ### Prior(Kernel)與Nice(User)轉換
-> 主要透過 NICE_TO_PRIO 和 PRIO_TO_NICE 進行轉換
+> 主要透過 NICE_TO_PRIO 和 PRIO_TO_NICE 進行轉換  
 
 ![image](https://hackmd.io/_uploads/B1CQHRIdp.png)
 ```c=
@@ -258,7 +258,7 @@ static inline int normal_prio(struct task_struct *p)
 ```
 
 ### 新建process 流程
-從 do_fork-->copy_process 進行 process 調度的初始化
+從 do_fork-->copy_process 進行 process 調度的初始化  
 ```c=
 copy_process()
   sched_fork()
@@ -272,10 +272,10 @@ copy_process()
       enqueue_task
         fair_sched_class->enqueue_task-->enqueue_task_fair()
 ```
-sched_fork()
->呼叫 __sched_fork() 對 task_struct 進行 default 值的初始化(ex: se.vruntime=0)
->將父 process 的 normal_prio 設目前 process 的 prio 
->透過 process 的 prio 分配 sched_class
+sched_fork()  
+>呼叫 __sched_fork() 對 task_struct 進行 default 值的初始化(ex: se.vruntime=0)  
+>將父 process 的 normal_prio 設目前 process 的 prio   
+>透過 process 的 prio 分配 sched_class  
 ```c=
 int sched_fork(unsigned long clone_flags, struct task_struct *p)
 {
@@ -323,10 +323,10 @@ int sched_fork(unsigned long clone_flags, struct task_struct *p)
 }
 ```
 
-task_fork_fair
-> 更新 curr 資訊
-> 設定目前 process 的 vuntime 為新 process vruntime
-> 呼叫 place_entity 對 process vruntime 進行懲罰(因为新 process導致 CFS run queue 權重發生變化)
+task_fork_fair  
+> 更新 curr 資訊  
+> 設定目前 process 的 vuntime 為新 process vruntime  
+> 呼叫 place_entity 對 process vruntime 進行懲罰(因为新 process導致 CFS run queue 權重發生變化)  
 ```c=
 static void task_fork_fair(struct task_struct *p)
 {
@@ -358,15 +358,15 @@ static void task_fork_fair(struct task_struct *p)
 ```
 
 ### 計算vruntime
-> CFS 中所謂的 fair 是 vruntime 的，而不是實際時間的平等。
-> CFS 調度器拋棄先前固定時間片和固定調度週期的演算法，而採用 process 權重值的比重來量化和計算實際運行時間。
-> 引入虛擬時鐘概念，每個 process 虛擬時間是實際運行時間相對 Nice 值為0的權重比例值。
-> Nice 值小的 process，優先順序高且權重大，其虛擬時鐘比真實時鐘跑得慢，所以可以獲得更多的實際運行時間。
-> 反之，Nice 值大的 process，優先權低權重小，獲得的實際運行時間也更少。
+> CFS 中所謂的 fair 是 vruntime 的，而不是實際時間的平等。  
+> CFS 調度器拋棄先前固定時間片和固定調度週期的演算法，而採用 process 權重值的比重來量化和計算實際運行時間。  
+> 引入虛擬時鐘概念，每個 process 虛擬時間是實際運行時間相對 Nice 值為0的權重比例值。  
+> Nice 值小的 process，優先順序高且權重大，其虛擬時鐘比真實時鐘跑得慢，所以可以獲得更多的實際運行時間。  
+> 反之，Nice 值大的 process，優先權低權重小，獲得的實際運行時間也更少。  
 
->CFS選擇 vruntime 跑得慢的進程(Nice 低)，而不是實際運行時間運行的少的進程。
+>CFS選擇 vruntime 跑得慢的進程(Nice 低)，而不是實際運行時間運行的少的進程。  
 
->vruntime=delta_exec*nice_0_weight/weight
+>vruntime=delta_exec*nice_0_weight/weight  
 >vruntime表示進程的虛擬運行時間，delta_exec表示進程實際運行時間，nice_0_weight表示nice為0權重值，weight表示該進程的權重值，可以透過prio_to_weight[]取得。
 
 ### Process 調度流程
@@ -425,14 +425,14 @@ static void __sched notrace __schedule(bool preempt)
 
 
 ## Problem
-1. 編譯時缺少 gelf.h 
+1. 編譯時缺少 gelf.h  
    ![image](https://hackmd.io/_uploads/rJmPnbau6.png)
    * solution: `sudo apt-get install libelf-dev`
    * reference: [Ubuntu编译出现：gelf.h: No such file or directory](https://blog.csdn.net/weixin_44260459/article/details/123035958)
 
-2. 在寫copy_process時放錯位置
+2. 在寫copy_process時放錯位置  
     ![image](https://hackmd.io/_uploads/ryg_mF8_6.png)
-    * solution: 放在最後一行
+    * solution: 放在最後一行  
     ![Linux-proj2-2](https://hackmd.io/_uploads/S1rxJgH_6.jpg)
 
 ## Reference
