@@ -1,11 +1,12 @@
-# Project2
+# Linux Project2
 > 第 7 組
 > 112522099 許俊偉
 > 112522115 林語潔
 > 112526001 許仁覺
 
-## Outline
-[TOC]
+## Introduction
+[作業說明](https://staff.csie.ncu.edu.tw/hsufh/COURSES/FALL2023/linux_project_2.html)  
+Write a new system call int my_set_process_priority(int x) so that a process P can use this new system call my_set_process_priority(int x) to set the priority of the process as x every time when a context switch (i.e. process switch) transfers CPU to process P
 
 ## Enviroment
 * VMware 16.2.4
@@ -13,37 +14,37 @@
 * Kernel 4.15.1
 
 ## Compile Kernel
-1. 下載 linux kernel 並解壓縮
-    `tar -xvf ~/linux-4.15.1.tar.gz`
-    `cd linux-4.15.1/`
-	下載網址: https://cdn.kernel.org/pub/linux/kernel/v4.x/
-2. 在目錄 linux-4.15.1/ 下
-    `mkdir mycall`
+1. 下載 linux kernel 並解壓縮  
+    `tar -xvf ~/linux-4.15.1.tar.gz`  
+    `cd linux-4.15.1/`  
+	下載網址: [https://cdn.kernel.org/pub/linux/kernel/v4.x/](https://cdn.kernel.org/pub/linux/kernel/v4.x/)
+2. 在目錄 linux-4.15.1/ 下  
+    `mkdir mycall`  
     `cd mycall`
     
 3. 新增一個檔案 my_set_priority.c，後面有system call 的程式
     
-4. 在目錄 linux-4.15.1/mycall/ 下
-    `gedit Makefile`
+4. 在目錄 linux-4.15.1/mycall/ 下  
+    `gedit Makefile`  
     `obj-y := my_set_priority.o`
     
-5. 在目錄 linux-4.15.1/ 下修改檔案 Makefile 
-    這是為了告訴它，新增的 system call 的 source files 是在 mycall 目錄下
-    `gedit Makefile`
+5. 在目錄 linux-4.15.1/ 下修改檔案 Makefile  
+    這是為了告訴它，新增的 system call 的 source files 是在 mycall 目錄下  
+    `gedit Makefile`  
    ```
    core-y += kernel/ mm/ fs/ ipc/ security/ crypto/ block/
    找到這行，在最後面新增 mycall/
 
    core-y += kernel/ mm/ fs/ ipc/ security/ crypto/ block/ mycall/
    ```
-6. 新增 system call 到 system call table 中
-    `gedit arch/x86/entry/syscalls/syscall_64.tbl`
+6. 新增 system call 到 system call table 中  
+    `gedit arch/x86/entry/syscalls/syscall_64.tbl`  
     ```
     在最後面新增一行
     333	common	my_set_priority		sys_my_set_priority
     ```
-7. 修改 system call header
-    `gedit include/linux/syscalls.h`
+7. 修改 system call header  
+    `gedit include/linux/syscalls.h`  
     
     ```
     在最下面 (#endif前) 新增一行
@@ -53,27 +54,27 @@
     asmlinkage 代表我們的參數都可以在 stack 裡取用
     ```
 
-8. 安裝編譯 kernel 所需的套件
+8. 安裝編譯 kernel 所需的套件  
 	`sudo apt install build-essential libncurses-dev libssl-dev libelf-dev bison flex -y`
 
-9. 設定檔
+9. 設定檔  
     `sudo make menuconfig`
 
-10. 開始編譯
-    `sudo make -j4`
-    `sudo make modules_install install -j4`
+10. 開始編譯  
+    `sudo make -j4`  
+    `sudo make modules_install install -j4`  
     `sudo make install -j4`
 
-11. 修改 grub
-    `sudo gedit /etc/default/grub`
-	修改成:
+11. 修改 grub  
+    `sudo gedit /etc/default/grub`  
+	修改成:  
     ```
 	GRUB_TIMEOUT_STYLE=menu
 	GRUB_TIMEOUT=3
-    ```
-	更新 grub:
+    ```  
+	更新 grub:  
     `sudo grub-mkconfig -o /boot/grub/grub.cfg`
-12. 重開機
+12. 重開機  
     `reboot`
 ## Add Syscall
 ### 設定 my_fixed_priority
@@ -163,14 +164,14 @@ int main(){
 	return 0;
 }
 ```
-* 使用 dmesg 查看
+* 使用 dmesg 查看  
 ![image](https://hackmd.io/_uploads/rJq6hWTd6.png)
 
-  > line1: SYSCALL333 設定 my_fixed_priority 為 130
-  > line2: 在 core.c __schedule() 中，更改 static_prio 之前
-  > line3: 在 core.c __schedule() 中，更改 static_prio 之後
-  > line4: SYSCALL334 使用 system call 查看 static_prio 是否有成功修改
-* 程式輸出
+  > line1: SYSCALL333 設定 my_fixed_priority 為 130  
+  > line2: 在 core.c __schedule() 中，更改 static_prio 之前  
+  > line3: 在 core.c __schedule() 中，更改 static_prio 之後  
+  > line4: SYSCALL334 使用 system call 查看 static_prio 是否有成功修改  
+* 程式輸出  
   ![image](https://hackmd.io/_uploads/S1Eh1xrua.png =80%x)
   
   > 為了防止新process佔用cpu時間，place_entity會對新process的vruntime進行處罰，故雖然改變的static_prior，但因為對新process權重改變的vruntime處罰，實際運行的時間並無隨prior有趨勢上的變化。
