@@ -34,7 +34,8 @@
 
 ## Execution Flow
 1. 執行 Name 函數的原始功能:印出組別及組員名字
-![image](resources/1.png)
+	<img src="resources/1.png" width="70%">
+
 2. 開始執行 ID 函數  
   (1) 輸入學生1的學號(ID1)，如下圖  
   (2) 輸入學生2的學號(ID2)，如下圖  
