@@ -120,7 +120,48 @@
 1. 本設計為根據輸入的 6-bit 控制訊號，決定該完成哪一種運算，如果訊號改變成乘法，就把 counter 歸 0，並開始數32個 clk 然後開啟 HiLo 暫存器給乘法器放值進去，最後將 Signal 的值傳給所有 output。
 
 ## Datapath and Architecture
-## TotalALU
-<img src="resources/1.png" width="60%">  
+### TotalALU   
+<div align=center><img src="resources/1.png" width="70%"></div>  
+    
+### ALU  
+<div align=center><img src="resources/2.png" width="80%"></div>
 
+### Multiplier  
+<div align=center><img src="resources/3.png" width="70%"></div>
 
+### Shifter  
+<div align=center><img src="resources/4.png" width="90%"></div>
+
+## Verification Result  
+### Input 檔內容
+<div align=center><img src="resources/5.png" width="90%"></div>
+
+### Icarus Verilog 驗證結果:
+<div align=center><img src="resources/6.png" width="90%"></div>
+<div align=center><img src="resources/7.png" width="90%"></div>
+<div align=center><img src="resources/8.png" width="90%"></div>
+
+### Waveform 輸出圖形:
+#### ALU (以alu0為代表)
+<div align=center><img src="resources/9.png" width="90%"></div>
+
+#### Multiplier
+<div align=center><img src="resources/10.png" width="90%"></div>
+
+#### Shifter (以shift0為代表)
+<div align=center><img src="resources/11.png" width="90%"></div>
+
+#### HiLo
+<div align=center><img src="resources/12.png" width="90%"></div>
+
+#### MUX
+<div align=center><img src="resources/13.png" width="90%"></div>
+
+#### ALUControl
+<div align=center><img src="resources/14.png" width="90%"></div>
+
+## Discussion
+各組員分工方式與負責項目:
+> 程式設計:黃瀚霆、許俊偉、呂紹至、李承謙  
+    程式撰寫:黃瀚霆、許俊偉  
+    報告製作:黃瀚霆、許俊偉、呂紹至、李承謙
