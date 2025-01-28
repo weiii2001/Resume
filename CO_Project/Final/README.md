@@ -13,13 +13,13 @@ CPU，並且需完成下列 16 道 MIPS 指令
 5. Other Instructions: **mfhi, mflo, nop**
 
 ## Feature Description
-1.  IF‌:‌ 指‌令‌摘‌取‌（‌Instruction‌ Fetch‌）‌簡‌稱‌IF‌，IF‌階‌段‌主‌要‌負‌責‌指‌令‌抓‌取‌的‌動‌作。  
-2.  ID: 指令解碼（Instruction Decode）簡稱ID，ID階段主要是負責指令的解為動作和暫存器陣列的讀取動作。  
-3.  EX: 指令執行（Instruction Execute）簡稱EX。EX階段主要負責一般算術邏輯運算和記憶體存取位址的計算。
-4.  MEM: 記憶體存取(Data Memory) 簡稱MEM。MEM階段主要在處理Data Memory(DM)的存取動作。
-5.  WB: 資料寫回(Write Back）簡稱WB。WB 階段主要是負責將結果寫回Register Bank中。
-6.  ALU: 創立31個unitALU並將他們接起來表示一個32bit的ALU，裡面處理了ALU/shifter等功能。
-7.  alu_ctl: 來決定要做哪種運算(add, sub, and, or, slt, Multu...)並將對應的訊號傳入對應的電路中。  
+1. IF‌:‌ 指‌令‌摘‌取‌（‌Instruction‌ Fetch‌）‌簡‌稱‌IF‌，IF‌階‌段‌主‌要‌負‌責‌指‌令‌抓‌取‌的‌動‌作。  
+2. ID: 指令解碼（Instruction Decode）簡稱ID，ID階段主要是負責指令的解為動作和暫存器陣列的讀取動作。  
+3. EX: 指令執行（Instruction Execute）簡稱EX。EX階段主要負責一般算術邏輯運算和記憶體存取位址的計算。
+4. MEM: 記憶體存取(Data Memory) 簡稱MEM。MEM階段主要在處理Data Memory(DM)的存取動作。
+5. WB: 資料寫回(Write Back）簡稱WB。WB 階段主要是負責將結果寫回Register Bank中。
+6. ALU: 創立31個unitALU並將他們接起來表示一個32bit的ALU，裡面處理了ALU/shifter等功能。
+7. alu_ctl: 來決定要做哪種運算(add, sub, and, or, slt, Multu...)並將對應的訊號傳入對應的電路中。  
 8. unitALU: 為1-bit 的 ALU，功能為執行 1-bit ALU 的運算，包含 AND, OR, ADD, SUB, SLT 等功能，結果為以 Ripple-Carry 的進位方式，在 ALU 裡連接 32 個 1-bit ALU Bit Slice，成為 32-bit ALU。
 9. FA: 為 unitALU 內部所使用的全加器，可執行 ADD, SUB 等運算。
 10. Shifter: 設計 32-bits Barrel Shifter，以完成邏輯左移運算。以課程講義[1]P.28 所 描述之設計方式，以 Data Flow Modeling(Continuous Assignments)完成。本模組為組合邏輯(Combinational Logic)。
