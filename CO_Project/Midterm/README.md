@@ -136,12 +136,12 @@
 ### Input 檔內容
 <div align=center><img src="resources/5.png" width="90%"></div>
 
-### Icarus Verilog 驗證結果:
+### Icarus Verilog 驗證結果
 <div align=center><img src="resources/6.png" width="90%"></div>
 <div align=center><img src="resources/7.png" width="90%"></div>
 <div align=center><img src="resources/8.png" width="90%"></div>
 
-### Waveform 輸出圖形:
+### Waveform 輸出圖形
 #### ALU (以alu0為代表)
 <div align=center><img src="resources/9.png" width="90%"></div>
 
