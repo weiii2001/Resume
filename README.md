@@ -33,10 +33,10 @@ C/C++、Java、Python、Verilog、ARM Assembly Language、MIPS
 
 ## Research  
 
-### **Non-continuous Image Stitching Problem Based on Deep Learning and Computer Vision Techniques**  
+### **Non-continuous Image Stitching Problem Based on Deep Learning and Computer Vision Techniques**  [Link](https://drive.google.com/file/d/1QKWhET_Y3HBIk-cVLHMOqHQB3q_I_bxq/view?usp=sharing)  
 *Undergraduate Capstone Project – Funded by the Ministry of Science and Technology (MOST)*  
 
-### **Incremental Scene Classification Using Dual Knowledge Distillation and Classifier Discrepancy on Natural and Remote Sensing Images**  
+### **Incremental Scene Classification Using Dual Knowledge Distillation and Classifier Discrepancy on Natural and Remote Sensing Images**  [Link](https://www.mdpi.com/2079-9292/13/3/583)  
 *Graduate research – Participated in partial experiments and methodology*  
 
 ---
