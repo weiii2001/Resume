@@ -55,5 +55,5 @@ Developed an OurScheme interpreter based on the Lisp dialect, implementing S-exp
 ### [**5-stage Pipelined MIPS-Lite CPU**](CO_Project/Final)  
 Designed and implemented a 5-stage pipelined CPU capable of executing 16 MIPS instructions (`add`, `sub`, `and`, `or`, `sll`, `slt`, `addiu`, `lw`, `sw`, `beq`, `j`, `jal`, `multu`, `mfhi`, `mflo`, `nop`) using Verilog HDL and simulated with Icarus Verilog.  
 
-### [**Draw Julia Set**](ALE_Project/Final)
+### [**Draw Julia Set**](ALE-Project)
 Develops an ARM Assembly Language program using GCC, GAS, GDB, and Code::Blocks, executed in a simulated ARM processor environment. It focuses on visualizing the Julia Set fractal, requiring efficient numerical computation and memory management in low-level programming.
