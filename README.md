@@ -11,11 +11,12 @@
 **National Central University, Taoyuan, Taiwan**  
 _Master of Science in Computer Science and Information Engineering_  
 *Sep. 2023 - Present*  
+GPA 4.2/4.3
 
 **Chung Yuan Christian University, Taoyuan, Taiwan**  
 _Bachelor of Science in Information and Computer Engineering_  
 *Sep. 2019 - Jun. 2023*  
-GPA 3.9  
+GPA 3.9/4.0
 
 ---
 
