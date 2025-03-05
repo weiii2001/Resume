@@ -33,6 +33,8 @@ C/C++、Java、Python、Verilog、ARM Assembly Language、MIPS
 ---
 
 ## Research  
+### **Incremental Semantic Segmentation Using Multiple Model Consensus**
+*Main graduate research – Submit to IEEE AVSS 2025 (Advanced Visual and Signal-Based Systems)*  
 
 ### **Non-continuous Image Stitching Problem Based on Deep Learning and Computer Vision Techniques**  [Link](https://drive.google.com/file/d/1QKWhET_Y3HBIk-cVLHMOqHQB3q_I_bxq/view?usp=sharing)  
 *Undergraduate Capstone Project – Funded by the Ministry of Science and Technology (MOST)*  
