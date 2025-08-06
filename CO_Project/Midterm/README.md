@@ -1,4 +1,5 @@
-# Computer Organization Midterm Project
+# ALU and Multiplier Design
+> Computer Organization Midterm Project  
 > 第25組  
 > 10827214 黃瀚霆 10827221 許俊偉 10827223 呂紹至 10827226 李承謙
 
