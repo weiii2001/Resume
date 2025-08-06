@@ -10,7 +10,7 @@
 
 **National Central University, Taoyuan, Taiwan**  
 _Master of Science in Computer Science and Information Engineering_  
-*Sep. 2023 - Present*  
+*Sep. 2023 - Jun. 2025*  
 GPA  4.2 /4.3
 
 **Chung Yuan Christian University, Taoyuan, Taiwan**  
@@ -26,8 +26,8 @@ GPA  3.9 /4.0
 C/C++、Java、Python、Verilog、ARM Assembly Language、MIPS  
 
 ### Machine Learning  
-- **Architecture**: Pytorch、TensorFlow  
-- **Image Recognition**: ResNet、DeepLab、Swin Transformer、Segformer、U-net  
+- **Architecture**: PyTorch、TensorFlow  
+- **Image Recognition**: ResNet、DeepLab、Swin Transformer、SegFormer、U-net  
 - **Technology**: Semantic Segmentation、Image Classification、Incremental Learning  
 
 ---
