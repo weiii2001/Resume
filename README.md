@@ -8,12 +8,13 @@
 
 ## Education  
 
-**National Central University, Taoyuan, Taiwan**  
+### National Central University, Taoyuan, Taiwan  
 _Master of Science in Computer Science and Information Engineering_  
 *Sep. 2023 - Jun. 2025*  
+Thesis: “M2CB: Incremental Semantic Segmentation via Multiple Model Consensus Building”  [Link](https://etd.lib.nycu.edu.tw/cgi-bin/gs32/ncugsweb.cgi?o=dncucdr&s=id%3D%22GC112522099%22.&searchmode=basic)  
 GPA  4.2 /4.3
 
-**Chung Yuan Christian University, Taoyuan, Taiwan**  
+### Chung Yuan Christian University, Taoyuan, Taiwan  
 _Bachelor of Science in Information and Computer Engineering_  
 *Sep. 2019 - Jun. 2023*  
 GPA  3.9 /4.0
@@ -47,7 +48,7 @@ C/C++、Java、Python、Verilog、ARM Assembly Language、MIPS
 ## Project  
 
 ### [**Linux - System Call**](Linux-Project/Project2)  
-Write a new system call `int my_set_process_priority(int x)` so that a process P can use this new system call `my_set_process_priority(int x)` to set the priority of the process as `x` every time when a context switch (i.e., process switch) transfers CPU to process P.  
+Write a new system call `int my_set_process_priority(int x)` so that a process P can use this new system call `my_set_process_priority(int x)` to set the priority of the process as `x` whenever a context switch (i.e., process switch) transfers CPU to process P.  
 
 ### [**OurScheme Interpreter**](PL-Project)  
 Developed an OurScheme interpreter based on the Lisp dialect, implementing S-expression parsing, evaluation, variable binding, conditional statements, and error handling mechanisms.  
