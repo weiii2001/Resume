@@ -11,7 +11,7 @@
 ### National Central University, Taoyuan, Taiwan  
 _Master of Science in Computer Science and Information Engineering_  
 *Sep. 2023 - Jun. 2025*  
-Thesis: “M2CB: Incremental Semantic Segmentation via Multiple Model Consensus Building”  [Link](https://etd.lib.nycu.edu.tw/cgi-bin/gs32/ncugsweb.cgi?o=dncucdr&s=id%3D%22GC112522099%22.&searchmode=basic)  
+Thesis: “M2CB: Incremental Semantic Segmentation via Multiple Model Consensus Building”  [Link](https://etd.lib.ncu.edu.tw/detail/8c799c2da4049547b7c155497150b01b/)  
 GPA  4.2 /4.3
 
 ### Chung Yuan Christian University, Taoyuan, Taiwan  
@@ -35,7 +35,7 @@ C/C++、Java、Python、Verilog、ARM Assembly Language、MIPS
 
 ## Research  
 ### **Incremental Semantic Segmentation Using Multiple Model Consensus**  [Link](https://ieeexplore.ieee.org/document/11149972)  
-*Main graduate research – Submit to IEEE [AVSS 2025](https://sites.google.com/view/avss2025-tw) (Advanced Visual and Signal-Based Systems)*  
+*Presented at [IEEE AVSS 2025](https://sites.google.com/view/avss2025-tw), Tainan, Taiwan, 2025*
 
 ### **Non-continuous Image Stitching Problem Based on Deep Learning and Computer Vision Techniques**  [Link](https://drive.google.com/file/d/1QKWhET_Y3HBIk-cVLHMOqHQB3q_I_bxq/view?usp=sharing)  
 *Undergraduate research – Funded by the Ministry of Science and Technology (MOST)*  
