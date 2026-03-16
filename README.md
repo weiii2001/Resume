@@ -43,16 +43,15 @@ C/C++、Java、Python、Verilog、ARM Assembly Language、MIPS
 ### **Incremental Scene Classification Using Dual Knowledge Distillation and Classifier Discrepancy on Natural and Remote Sensing Images**  [Link](https://www.mdpi.com/2079-9292/13/3/583)  
 *Graduate research – Participated in partial experiments and methodology*  
 
-
 ## Project  
-### [**Linux - System Call**](Linux-Project/Project2)  
+### [**Linux - System Call**](https://github.com/weiii2001/Linux-Project/tree/main/Project2)  
 Write a new system call `int my_set_process_priority(int x)` so that a process P can use this new system call `my_set_process_priority(int x)` to set the priority of the process as `x` whenever a context switch (i.e., process switch) transfers CPU to process P.  
 
-### [**OurScheme Interpreter**](PL-Project)  
+### [**OurScheme Interpreter**](https://github.com/weiii2001/PL-Project)  
 Developed an OurScheme interpreter based on the Lisp dialect, implementing S-expression parsing, evaluation, variable binding, conditional statements, and error handling mechanisms.  
 
-### [**5-stage Pipelined MIPS-Lite CPU**](CO_Project/Final)  
+### [**5-stage Pipelined MIPS-Lite CPU**](https://github.com/weiii2001/CO-Project/tree/main/Final)  
 Designed and implemented a 5-stage pipelined CPU capable of executing 16 MIPS instructions (`add`, `sub`, `and`, `or`, `sll`, `slt`, `addiu`, `lw`, `sw`, `beq`, `j`, `jal`, `multu`, `mfhi`, `mflo`, `nop`) using Verilog HDL and simulated with Icarus Verilog.  
 
-### [**Draw Julia Set**](ALE-Project)
+### [**Draw Julia Set**](https://github.com/weiii2001/ALE-Project)
 Develops an ARM Assembly Language program using GCC, GAS, GDB, and Code::Blocks, executed in a simulated ARM processor environment. It focuses on visualizing the Julia Set fractal, requiring efficient numerical computation and memory management in low-level programming.
