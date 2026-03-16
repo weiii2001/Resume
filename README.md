@@ -4,10 +4,13 @@
 📞 +886 987866696  
 📧 [a0987866696@gmail.com](mailto:a0987866696@gmail.com)  
 
----
+## Outline
+- [Education](#education)
+- [Technical Skills](#technical-skills)
+- [Research](#research)
+- [Project](#project)
 
 ## Education  
-
 ### National Central University, Taoyuan, Taiwan  
 _Master of Science in Computer Science and Information Engineering_  
 *Sep. 2023 - Jun. 2025*  
@@ -19,8 +22,6 @@ _Bachelor of Science in Information and Computer Engineering_
 *Sep. 2019 - Jun. 2023*  
 GPA  3.9 /4.0
 
----
-
 ## Technical Skills  
 
 ### Programming Languages  
@@ -31,7 +32,6 @@ C/C++、Java、Python、Verilog、ARM Assembly Language、MIPS
 - **Image Recognition**: ResNet、DeepLab、Swin Transformer、SegFormer、U-net  
 - **Technology**: Semantic Segmentation、Image Classification、Incremental Learning  
 
----
 
 ## Research  
 ### **Incremental Semantic Segmentation Using Multiple Model Consensus**  [Link](https://ieeexplore.ieee.org/document/11149972)  
@@ -43,10 +43,8 @@ C/C++、Java、Python、Verilog、ARM Assembly Language、MIPS
 ### **Incremental Scene Classification Using Dual Knowledge Distillation and Classifier Discrepancy on Natural and Remote Sensing Images**  [Link](https://www.mdpi.com/2079-9292/13/3/583)  
 *Graduate research – Participated in partial experiments and methodology*  
 
----
 
 ## Project  
-
 ### [**Linux - System Call**](Linux-Project/Project2)  
 Write a new system call `int my_set_process_priority(int x)` so that a process P can use this new system call `my_set_process_priority(int x)` to set the priority of the process as `x` whenever a context switch (i.e., process switch) transfers CPU to process P.  
 
