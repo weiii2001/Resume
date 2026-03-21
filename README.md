@@ -24,14 +24,19 @@ GPA  3.9 /4.0
 
 ## Technical Skills  
 
-### Programming Languages  
-C/C++、Java、Python、Verilog、ARM Assembly Language、MIPS  
+### Systems & Hardware
+- **Computer Architecture**: 5-Stage Pipelining, RISC ISA (MIPS/ARM)
+- **System Programming:** Linux System Calls, Multithreading, Memory Management
+- **Hardware Description**: Verilog HDL
 
-### Machine Learning  
-- **Architecture**: PyTorch、TensorFlow  
-- **Image Recognition**: ResNet、DeepLab、Swin Transformer、SegFormer、U-net  
-- **Technology**: Semantic Segmentation、Image Classification、Incremental Learning  
+### AI & Computer Vision
+- **Deep Learning Frameworks**: PyTorch, TensorFlow, Keras  
+- **Computer Vision**: Semantic Segmentation, Object Detection
+- **AI Specialized Areas**: Class-Incremental Learning (CIL), Model Consensus, Knowledge Distillation  
 
+### Programming   
+- C/C++、Java、Python、Verilog
+- ARM/MIPS Assembly Language 
 
 ## Research  
 ### **Incremental Semantic Segmentation Using Multiple Model Consensus**  [Link](https://ieeexplore.ieee.org/document/11149972)  
