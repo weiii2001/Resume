@@ -15,12 +15,12 @@
 _Master of Science in Computer Science and Information Engineering_  
 *Sep. 2023 - Jun. 2025*  
 Thesis: “M2CB: Incremental Semantic Segmentation via Multiple Model Consensus Building”  [Link](https://etd.lib.ncu.edu.tw/detail/8c799c2da4049547b7c155497150b01b/)  
-GPA  4.2 /4.3
+GPA  4.2 /4.3  [Link](https://drive.google.com/file/d/1A0EL3NLYR9XImyppSf097t0iGokOqqsB/view?usp=drive_link) 
 
 ### Chung Yuan Christian University, Taoyuan, Taiwan  
 _Bachelor of Science in Information and Computer Engineering_  
 *Sep. 2019 - Jun. 2023*  
-GPA  3.9 /4.0
+GPA  3.9 /4.0  [Link](https://drive.google.com/file/d/1SbgJkL3DGjUDQqAExrrdspGMd-vtPGdN/view?usp=drive_link) 
 
 ## Technical Skills  
 
