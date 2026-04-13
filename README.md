@@ -60,3 +60,13 @@ Designed and implemented a 5-stage pipelined CPU capable of executing 16 MIPS in
 
 ### [**Draw Julia Set**](https://github.com/weiii2001/ALE-Project)
 Develops an ARM Assembly Language program using GCC, GAS, GDB, and Code::Blocks, executed in a simulated ARM processor environment. It focuses on visualizing the Julia Set fractal, requiring efficient numerical computation and memory management in low-level programming.
+
+### [**OS-Project**](https://github.com/weiii2001/OS-Project)
+- [**Multi-Process and Multi-Thread**](https://github.com/weiii2001/OS-Project/tree/main/Project1)  
+Implemented multiple sorting strategies by combining Bubble Sort with data partitioning, and compared performance across single-thread, multi-process, and multi-thread execution models.
+
+- [**CPU Scheduling**](https://github.com/weiii2001/OS-Project/tree/main/Project2)  
+Implemented multiple CPU scheduling algorithms by simulating process execution flows, and analyzed the impact of different scheduling strategies on system performance.
+
+- [**Page Replacement**](https://github.com/weiii2001/OS-Project/tree/main/Project3)  
+Implemented multiple page replacement algorithms to simulate operating system memory management, focusing on page eviction strategies when page frames are insufficient.
